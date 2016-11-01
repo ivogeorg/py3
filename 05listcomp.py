@@ -28,3 +28,20 @@ print([num for elem in vec for num in elem])
 vec = [[[1,2,3], [4,5,6], [7,8,9]], [[1,2,3], [4,5,6], [7,8,9]]]
 print([num for outer in vec for inner in outer for num in inner])
 
+# 3.
+# nested list comprehensions
+matrix = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+]
+# the first list comp is evaluated in the context of the following 'for'
+print([[row[i] for row in matrix] for i in range(4)])
+# a list of LISTS
+# [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+
+# elegantly equivalent to the above is
+print(list(zip(*matrix)))
+
+# notice that this is a list of TUPLES! (zip produces tuples)
+# [(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]

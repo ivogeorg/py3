@@ -33,13 +33,36 @@ def moving_average(iterable, n=3):
     # http://en.wikipedia.org/wiki/Moving_average
     it = iter(iterable)
     d = deque(islice(it, n-1))
+    print("Deque init:", d)
     d.appendleft(0)
+    print("Deque appendleft(0):", d)
     s = sum(d)
+    print("Sum init:", s)
     for elem in it:
+        print("Elem", elem)
         s += elem - d.popleft()
+        print("Sum:", s)
+        print("Deque:", d)
         d.append(elem)
+        print("Deque append elem:", d)
+        print("Yield s/n:", s/n)
         yield s / n
 
-for mav in moving_average([40, 30, 50, 46, 39, 44]):
-    print(mav)
+
+if __name__ == '__main__':
+    for mav in moving_average([40, 30, 50, 46, 39, 44]):
+        print(mav)
+
+
+# 3.
+# deque slicing and deletion
+def delete_nth(d, n):
+    d.rotate(-n)
+    d.popleft()
+    d.rotate(n)
+
+d = deque(['Kili', 'Fili', 'Oin', 'Gloin', 'Bifur', 'Bofur'])
+print(d)
+delete_nth(d, 3)
+print(d)
 

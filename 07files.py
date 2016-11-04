@@ -31,3 +31,6 @@ with open('json.txt', 'r') as infile:
 # NOTE: JSON format matches Python dicts and lists
 with open('sample.json', 'r') as infile:
     print(json.load(infile))
+
+# see https://www.safaribooksonline.com/library/view/python-cookbook-3rd/9781449357337/ch06s02.html
+# and http://json.org/example.html
